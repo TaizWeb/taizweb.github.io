@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<title>Introducing music-dl!</title>
+		<link rel='stylesheet' href='../../post-ui.css' type='text/css' />
+	</head>
+	<body id='root'>
+		<div id='post'>
+			<h1 id='post-title'>Introducing music-dl!</h1>
+			<p id='post-date'>March 22nd, 2020</p>
+			<div id='post-body'>
+				<p>So in my quest to <s>pirate</s> legally download albums from YouTube, it often involved me using a series of programs/scripts to get everything to play nice in my music players. Those times are <a href="https://github.com/taizweb/music-dl">no more!</a></p>
+				<h2>My Old Process</h2>
+				<p>Basically, I'd find an album on YouTube I wanted, run youtube-dl, feed it into an ffmpeg script to convert them all to ogg, then go to some other external application to change the metadata so stuff like albums were in the right place. This was slow, tedious, and overall just a poor way of doing things.</p>
+				<h2>Introducing music-dl</h2>
+				<p>I've been writing a fair bit of python recently for my CS classes. So rather than use my usual (lua) I figured I'd have a change of pace. By the end, you just paste in a playlist link and watch the magic happen. I really just made this to scratch my own back and save some time, but I'm already planning ways to improve it (like just editing tags of songs).</p>
+				<h2>How it works</h2>
+				<p>I didn't write my own YouTube scraper or anything crazy link that, and considering how often YouTube likes to change itself, I'd probably end up sinking all my time in trying to keep it from breaking. So I just make a quick call to youtube-dl and have it grab them for me. Following that, the user provides what format they want the songs in. This is where ffmpeg comes in. I reused my own script for doing this initially, until eventually just having python handle it in a loop. Now that all the songs are in a uniform format, they can play nice and have metadata attached. The user is asked for the album name and artist, then for every song, a title. The user is shown what the filename is first, since these tend to have the song name in them to begin with. After that, we're done! All the songs are nicely tagged and ready to go in a folder.</p>
+				<h2>My roadblock</h2>
+				<p>Two words. Cover art. I managed to get ffmpeg to do it for me, resulting in what appeared to be a thumbnail embedded in the song itself, just like I wanted. When trying to run it in both rhythmbox and foobar2000, my music players of choice, things went to hell. Apparently ffmpeg is a bit bad at not ruining the audio stream in adding the cover art. Though some players I tried, like mpv and vlc, handled it just fine. I assume they have some sort of measures to "repair" malformed streams during runtime. Alright, so just do a bit more digging into the ffmpeg docs and figure out how to make it <em>not</em> break the files, right? About that... <a href='https://trac.ffmpeg.org/ticket/4448'>apparently</a> the ffmpeg devs themselves just stuck it on the wish list rather than an issue... <em>5 years ago</em> so ffmpeg is out for this job. I looked into other tools like lame and even tried using scripts provided on various forums, most of which required the image to be turned into base64 first, then some hacky stuff with headers to embed it. So rather than learning how music files work and writing a base64 converter (or adding another dependency) I called it a feature.</p>
+				<h2>Feature?</h2>
+				<p>Most music players (hell, every single one I tried) supports having a file named cover.jpg (or .png) in the folder with the songs, and then cleverly uses that as the cover art. Cool! I suppose it'd also save space, considering the same image doesn't have to be embedded for every single file. In short, it works. And in my book, that's a win. Though I wouldn't be opposed to someone giving me a pull request implementing it, for those who use music players from the 90's and don't have this feature supported.</p>
+				<h2>Going forward</h2>
+				<p>I'd like to add more metadata features later on. Like adding stuff like album year, genre, track listing, etc. Stuff I don't <em>personally</em> care about (remember, this was just to scratch my own back), but will support for people who want a simple program to automate this sort of thing. I'd have to add a fair bit of code for this though, since practically none of the music formats can agree what to call things (like some call the song artist an "author").</p>
+				<p>Overall, I'm happy with the way things worked out. My itch is scratched and my ears are happy having new stuff to listen to. I might mess with tkinter later to make a nice GUI for the program later, for those who are afraid of terminals. For a weekend project, it's something I'm honestly proud of. Onto the next project!</p>
+			</div>
+		</div>
+		<script charset='utf-8' src='../../post-ui.js'></script>
+	</body>
+</html>
+

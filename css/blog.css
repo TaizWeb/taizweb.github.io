@@ -1,0 +1,118 @@
+/* Document root */
+#root {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: row;
+	font-family: Arial;
+}
+
+/* The top heading of the posts */
+#posts-heading {
+	min-width: 100%;
+	text-align: center;
+}
+
+/* The posts container, contains bottom messages */
+#posts-wrapper {
+	margin: 0;
+	max-width: 50%;
+}
+
+/* A collection of the posts */
+#posts {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+/* Each individual post */
+.post {
+	border: 1px solid black;
+	margin-bottom: 1em;
+	border-radius: .75em;
+	padding: 1em;
+}
+
+.post-title {
+	font-size: 1.5em;
+	text-decoration: none;
+	color: black;
+}
+
+.post-date {
+	color: gray;
+	float: right;
+	margin: 0;
+}
+
+/* Aside code */
+#aside {
+	order: 2;
+	padding-left: 2em;
+}
+
+.aside-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+#headline {
+	display: none;
+}
+
+/* Unfinished media queries */
+/* If the screen is bigger than a phone, center posts */
+@media screen and (max-width: 768px) {
+	#root {
+		flex-direction: column;
+	}
+	#posts-wrapper {
+		min-width: 100%;
+	}
+}
+
+/* Dark mode */
+
+/* Background */
+#root.dark {
+	background-color: #2d2d2d;
+}
+
+/* Preview headings */
+#root.dark #posts-heading {
+	color: #f9f9f9;
+}
+
+/* The text */
+#root.dark #posts-wrapper #posts .post .post-preview {
+	color: #f9f9f9;
+}
+
+/* Preview headings */
+#root.dark #posts-wrapper #posts .post .post-title {
+	color: #f9f9f9;
+}
+
+/* Preview dates */
+#root.dark #posts-wrapper #posts .post .post-date {
+	color: #dedede;
+}
+
+/* The links */
+#root.dark #posts-wrapper #posts .post .post-link {
+	color: #d64937;
+}
+
+/* The aside title */
+#root.dark #aside .aside-title {
+	color: #f9f9f9;
+}
+
+/* The aside links */
+#root.dark #aside .aside-list li a {
+	color: #d64937;
+}
+
+#root.dark #posts-wrapper #posts .post {
+	border: 1px solid white;
+}

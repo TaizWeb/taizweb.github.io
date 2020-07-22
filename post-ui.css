@@ -1,0 +1,101 @@
+#root {
+	display: flex;
+	flex-direction: row;
+	font-family: Arial;
+}
+
+#post {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	margin-left: 20%;
+	width: 50%;
+	font-size: 1.05em;
+	line-height: 1.5;
+}
+
+#post-title {
+	margin-bottom: 0;
+}
+
+#post-date {
+	color: grey;
+	margin-top: 0;
+}
+
+/* Images */
+#post-body img {
+	max-width: 100%;
+}
+
+#post-body figcaption {
+	color: grey;
+	font-size: 1em;
+	text-align: center;
+}
+
+/* Code */
+#post-body code {
+	background: whitesmoke;
+	color: red;
+}
+
+/* Aside */
+#aside {
+	order: 2;
+	padding-left: 2em;
+}
+
+.aside-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+/* Mobile support */
+@media screen and (max-width: 768px) {
+	#root {
+		flex-direction: column;
+	}
+	#post {
+		min-width: 100%;
+		margin-left: 0;
+	}
+}
+
+/* Dark theme */
+
+/* Background */
+#root.dark {
+	background-color: #2d2d2d;
+}
+
+/* The text */
+#root.dark #post {
+	color: #f9f9f9;
+}
+
+/* The date */
+#root.dark #post-date {
+	color: #dedede;
+}
+
+/* The links */
+#root.dark #post a {
+	color: #d64937;
+}
+
+#root.dark #post #post-body code {
+	background: #dedede;
+	color: #d64937;
+}
+
+/* The aside title */
+#root.dark #aside .aside-title {
+	color: #f9f9f9;
+}
+
+/* The aside links */
+#root.dark #aside .aside-list li a {
+	color: #d64937;
+}
+

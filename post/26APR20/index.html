@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<title>On Lua String Silliness</title>
+		<link rel='stylesheet' href='../../post-ui.css' type='text/css' />
+	</head>
+	<body id='root'>
+		<div id='post'>
+			<h1 id='post-title'>On Lua String Silliness</h1>
+			<p id='post-date'>April 26th, 2020</p>
+			<div id='post-body'>
+				<p>So lately, I've been getting into messing around with APIs, and what better way to do it than with Lua? Well, let's say I had a bit of trouble.</p>
+				<h2>Some Background</h2>
+				<p>The majority of web APIs tend to prefer to use a format called JSON when returning data. And if you're someone with a bit of experience with Lua, you'd know that this doesn't bode well, since Lua only has one data structure: tables. Now, this is all good and fine for most things, I've enjoyed their functionality when working on Project Neutron especially. Being able to add entire functions to them makes code feel nice and have a "class" of sorts. But due to the way they're formatted, it's not possible to just write a simple loop and pump JSON into them. Nor does the Lua standard library provide a way to do so. As a result, I caved and used an external library.</p>
+				<h2>The "Fun" Part</h2>
+				<p>Lua is a bit funny about strings. For starters, it merges escape characters directly into your string. So if you were to do <code>link={"url":"href=\"https://example.com\""}</code>, Lua would do you a real nice favor and return <code>"href="https://example.com""</code> when calling it. Why is this bad? Well, Lua would go ahead and parse it as <em>two</em> strings, <code>"href="</code> and <code>""</code>. So when I went and passed that to the converter, it freaked out and thought I was sending faulty JSON. Surely Lua has a way to support this, right? I hoped so. But after going through the entire string library, notably <code>string.format</code>, I found that it really didn't; the closest I got was using the 'q' format, but that cancelled <em>all the quotes</em>. So we get <code>\"href=\"https://example.com\"\"</code>. This also made the library freak out because now there were no strings at all. I also looked into using triple brackets notation, but that only works if you know precisely what's going into the string, so trying to do <code>[[[ someVariable ]]]</code> would quite literally give you "someVariable" as a string.</p>
+				<h2>Desperation</h2>
+				<p>I don't consider myself an expert on Lua in the slightest. So I was a bit hopeful that I was missing a blatantly obvious solution here, and reached out to the library creator and see what he thought. He essentially told me that I would have to manually add the backslashes myself in the string, so that when Lua parsed it, it would actually send over an backslash to his library and thus work. Which... it would! Except, I'm calling from an API here, so I'd have to somehow manually screen every single response and add the extra backslashes. Which simply isn't possible for something dynamic like what I'm working on. Hang on a second: a tedious task that follows a simple set of rules? That sounds like a job for the computer! And so I cooked up my own solution.</p>
+				<h2>Breaking It Down</h2>
+				<p>Alright, so in my example <code>link={"link":"href="https://example.com""}</code>, which quotes should be cancelled, and which should be ignored? Just looking at it, I came up with the following:</p>
+				<ul>
+					<li>If a quote has a '{' before it, don't touch it</li>
+					<li>If a quote has a '}' after it, don't touch it</li>
+					<li>If a quote has a ':' on either side of it, don't touch it</li>
+					<li>If a quote has a ',' on either side of it, don't touch it</li>
+					<li>If a quote has none of those things, it's clearly in the string, and should thus be cancelled!</li>
+				</ul>
+				<p>Below is my function (I also stripped newlines because they had a similar issue of being rendered as a 'n' and not a "\n")</p>
+				<p>Also note that I'm assuming no whitespace, as most APIs strip it. Stripping it manually is trivial with some slight modification to the code.</p>
+				<script src="https://gist.github.com/TaizWeb/8489b72d474aeb8dbd432b10ae372cc0.js"></script>
+				<h2>Success</h2>
+				<p>So I called the API, shoved the JSON into my function, then piped that into the JSON to table converter, and huzzah! It worked! I finally had a table with the response data in it that I could thus manipulate as I pleased. I stuck it on gist, and linked it in the support thread so future programmers in a similar slump could use it instead of looking everywhere on the internet for something that Lua sadly doesn't support. I declared the function public domain as well, so there's no legal baggage involved. And with that, I was back to work on my own project. Thanks for reading my programming brain dump.</p>
+			</div>
+		</div>
+		<script charset='utf-8' src='../../post-ui.js'></script>
+	</body>
+</html>
+

@@ -1,0 +1,58 @@
+/* Site-wide font */
+body {
+	font-family: Arial;
+	font-size: 1.1em;
+}
+
+/* About section */
+#about {
+	text-align: center;
+}
+
+#avatar {
+	border-radius: 100%;
+	max-height: 12em;
+	max-width: 12em;
+}
+
+#links {
+	text-align: center;
+}
+
+/* Links section */
+a.link {
+	padding: .5em;
+	text-decoration: none;
+	color: black;
+	font-size: 1.25em;
+}
+
+a.link:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+a.link:active {
+	font-weight: bold;
+}
+
+/* Updates section */
+#updates {
+	display: inline-block;
+	margin-top: 2em;
+	border: 1px black solid;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#flex-container {
+	display: flex;
+	justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+	#links {
+		line-height: 1.75;
+	}
+}
+

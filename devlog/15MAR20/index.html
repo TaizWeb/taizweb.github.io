@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<title>Happy Pi Day!</title>
+		<link rel='stylesheet' href='../../post-ui.css' type='text/css' />
+	</head>
+	<body id='root'>
+		<div id='post'>
+			<h1 id='post-title'>Happy Pi Day!</h1>
+			<p id='post-date'>March 15th, 2020</p>
+			<div id='post-body'>
+				<p>To commemorate pi day (3/14/20, for us dirty Americans anyway), I made <a href='https://github.com/TaizWeb/hashpi'>hashpi</a>, a small hashing algorithm with Lua. So how does it work? Well...</p>
+				<h2>Technical Breakdown</h2>
+				<p>First, I grabbed the first 26 digits of pi. These were used to correspond to the first 26 letters of the alphabet in order to rotate them, similar to what you see in <a href='https://en.wikipedia.org/wiki/ROT13'>rot13</a>.</p>
+				<p>My first step was to get the input from the terminal, this is easy enough with Lua's <code>arg</code> array. Then, I took the argument (a string of characters representing the password) and broke them down into their individual characters. Now comes a bit of a tricky part: ascii codes. For the uniformed, all letters have a number associated with them in computing, e.g. a is 97, z is 122. With lua's <code>string.byte()</code> function, I converted the letters to their ascii codes. After that, I subtracted their ascii code by 96 (for lowercase anyway) so that a became 1, b became 2, and so on.</p>
+				<p>After that, I took the digit of pi at that location, so for a that would be three, and added that to the ascii code (so a became d). Following that, I added back the 96 to the character, stuck it in lua's <code>string.char()</code> and thus converted the letter back to it's original form. Repeat this for the rest of the letters, and huzzah! You have a rotated string. You may be asking yourself: <em>But doesn't this sound more like rot13 than an actual hashing algorithm?</em> And yes, because originally I planned to convert the password back, too.</p>
+				<h2>The Problem</h2>
+				<p>I'll cut straight to it. 'h' is the 8th letter of the alphabet, and 'i' is the 9th. h's index of pi is 6, and i's is 5. And both 8+6 and 9+5 are 14, which becomes n. So when trying to <em>undo</em> my rotation, I have no way of knowing if an n should become an h or an i. So my rotation program became a one-way conversion, which is more akin to a hashing algorithm. I had an hour left of pi day, so I ran with it. I tacked on random letters or trimmed some off if the hash wasn't 16 characters (most hashes are that length) and called it good. Thus my rot-pi became a hashpi.</p>
+				<p><img src='https://raw.githubusercontent.com/TaizWeb/hashpi/master/screenshots/screenshot.png'/>
+				<figcaption>Screenshot of hashpi in action</figcaption></p>
+				<h2>Security</h2>
+				<p>If you read the README, you would know that I'm <em>very very very</em> against someone actually trying to use this to hash passwords. It has no salt support (unless you count multiple iterations as a form of salt), can very easily be shoved in a rainbow table, and hell, looking at the converted string, you can partially turn back some of the letters with some guessing. Although I know a bit about security, I'm in no way a cryptography expert.</p>
+				<h2>Closing</h2>
+				<p>It was a fun little project I hacked together in half an hour, and security aside, it's pretty cool. I doubt I'll ever touch it again (despite there still being leftover code from it being a rot function), but I did finally use more of lua's standard library in making it. Who knows, maybe I'll actually make a rot-pi program next year using a bunch of ascii symbols. Until next pi day!</p>
+			</div>
+		</div>
+		<script charset='utf-8' src='../../post-ui.js'></script>
+	</body>
+</html>
+
