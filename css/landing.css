@@ -56,3 +56,21 @@ a.link:active {
 	}
 }
 
+/* Snow */
+.flake {
+	padding-right: 8vw;
+	display: inline-block;
+	animation-name: fall;
+	animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+	from {
+		transform: translateY(-10vh);
+	}
+	to {
+		transform: translateY(100vh);
+	}
+}
+
+
