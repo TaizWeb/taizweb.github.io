@@ -69,7 +69,7 @@ a.link:active {
 		transform: translateY(-10vh) rotate(0deg);
 	}
 	to {
-		transform: translateY(100vh) rotate(180deg);
+		transform: translateY(100vh) rotate(225deg);
 	}
 }
 
