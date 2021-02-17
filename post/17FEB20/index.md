@@ -1,0 +1,15 @@
+# Everything is (not) Political
+Here we go. As an American I get politics shoved in my face on a daily basis. Even all my friends overseas are up to date on whatever dumpster we set on fire this week. Politics is something we think about daily. And honestly? I'm sick of it.
+
+## What I Believe In
+Just kidding. I don't believe in using my influence to tell people what to think. And shame on every single person who does. I believe the things I do because of the environment I grew up in. The way I was raised, the experiences I had; those all shaped the person I am today. In short: I'm an individual. And you should be too. As a result, I don't see people at fault for believing different things than I do. They're doing what they believe is right in the same way I am. I've never ended a friendship with someone over something as unimportant as our differing opinions on which old guy is the best to sit in DC.
+
+## What I'm Told
+> "But Taiz, you gotta care! If you aren't actively trying to manipulate your friends into your little cult, then you don't even care about democracy!"
+Nope. I'm not educated enough on all the niche ramifications of the issues to be able to tell others what to believe. Maybe what I believe is wrong. Maybe I don't know the whole story. So I'm not gonna force my beliefs on others. Not in person, or with the things I create.
+> "But Taiz, eVeRyThING is PolITicAL! You HAVE to get down to my level and put 'messages' in everything you make!"
+Blow it out your ass. There's a difference in being political and having political themes. Take Mario for example. Mario is collecting coins, ergo Mario is a capitalist. Mario is saving a princess, ergo Mario believes in Monarchy. But when has anyone _ever_ considered Mario a game about a Monarch-capitalist nation? Furthermore, when has Mario every tried to tell you what to believe? Unless "bing bing wahoo" is a political stance, that is.
+
+Hobbies are a means to escape. When people sit down and watch the game, they aren't looking to get their views challenged. They're looking to relax. And sadly it's not just all forms of media getting enveloped in constant politics, it's people too. I've had relationships with people for years all go to hell because they took "politics" as their obsession. I don't want to fight you every time some old geezer in DC sneezes. I want to be your friend. I want to tell you dumb jokes and laugh with you, not justify my views to you daily. And it's a damn shame that people let themselves get so divided over it. You think people fighting wars over religion was dumb? Try fighting your friends and family because you like different old guys. Yeah, we've really come a long way.
+
+So sure, if I could make Mario political, you could probably find themes in any sort of media. But there's also no hamfisted attempts at "changing minds" in Mario either. It's fun. As games should be. If you want to be told what to think, go ahead and submerge yourself in propaganda. I'll be having fun in the meantime.
