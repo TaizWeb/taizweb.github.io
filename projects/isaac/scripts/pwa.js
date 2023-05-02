@@ -10,12 +10,15 @@ let deferredPrompt;
 const addBtn = document.querySelector('.add-button');
 
 // Code to check if the app's isntalled, if so, hide the install button
-if ('getInstalledRelatedApps' in window.navigator) {
-	let relatedApps = await window.navigator.getInstalledRelatedApps();
-	if (relatedApps.length > 0) {
-		addBtn.style.display = "none";
+async function checkInstall() {
+	if ('getInstalledRelatedApps' in window.navigator) {
+		let relatedApps = await window.navigator.getInstalledRelatedApps();
+		if (relatedApps.length > 0) {
+			addBtn.style.display = "none";
+		}
 	}
 }
+checkInstall();
 // Code to handle install prompt on desktop
 
 
