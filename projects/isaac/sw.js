@@ -1,6 +1,6 @@
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open('fox-store').then((cache) => cache.addAll([
+    caches.open('isaac-store').then((cache) => cache.addAll([
       '/projects/isaac/',
       '/projects/isaac/scripts/pwa.js',
       '/projects/isaac/index.html',
