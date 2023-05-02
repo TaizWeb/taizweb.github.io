@@ -1,15 +1,26 @@
 {
   "name": "BOI Unlock Guide PWA",
-  "short_name": "UG PWA",
+  "short_name": "BOI Unlocks",
   "description": "Web app to serve as a guide to unlocks in The Binding of Isaac",
 	"icons": [
     {
-      "src": "icons/isaac-32.png",
+      "src": "icons/isaac-64.png",
       "sizes": "64x64",
       "type": "image/png"
-		}],
+		},
+    {
+      "src": "icons/isaac-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+		},
+    {
+      "src": "icons/isaac-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+		}
+	],
   "start_url": "/projects/isaac/index.html",
   "display": "fullscreen",
-  "theme_color": "#B12A34",
-  "background_color": "#B12A34"
+  "theme_color": "#87CEEB",
+  "background_color": "#87CEEB"
 }
