@@ -1,0 +1,105 @@
+/* HTML tags */
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Sans-Serif;
+}
+
+h2 {
+	text-align: center; /* May move this to a class later */
+}
+
+h4 {
+	margin: 1em 0em 1em 0em;
+}
+
+#main-content {
+	display: flex;
+	background-image: url("../images/so-white.png");
+}
+
+/* Each item's parent div */
+.item-container {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 2%;
+	width: 13%;
+	height: 30vh;
+	overflow: hidden;
+	padding: .5em;
+	margin: auto;
+	margin-bottom: 1em;
+	background-color: white;
+}
+
+.item-title {
+	text-align: center;
+	font-weight: bold;
+}
+
+.item-quality {
+	text-align: center;
+}
+
+/* Look, I thought rarity colors would be pretty (and they totally were) */
+.quality-0 {
+	color: black;
+}
+
+.quality-1 {
+	color: blue;
+}
+
+.quality-2 {
+	color: lime;
+}
+
+.quality-3 {
+	color: red;
+}
+
+.quality-4 {
+	color: blueviolet;
+}
+
+.item-pickup {
+	text-align: center;
+	font-style: italic;
+}
+
+/* Item sections */
+/* TODO: Possible consolodate these */
+#item-view {
+	width: 100%;
+	margin-top: 3em;
+}
+
+#items {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#trinkets {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* While I never did anything with this div, I now use it as a spacer so the content isn't too low on the screen */
+#challenges {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 50%;
+}
+
+/* Mobile */
+@media (min-width: 300px) and (max-width: 500px) {
+	.item-container {
+		width: 25%;
+	}
+
+	#popup-body.active {
+		width: 80%;
+	}
+}
+
