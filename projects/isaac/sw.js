@@ -1,3 +1,5 @@
+const version = "v1.1"; // Something to update to force PWAs to upgrade themselves
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open('isaac-store').then((cache) => cache.addAll([
